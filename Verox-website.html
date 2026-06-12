@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEROX INTERNATIONAL — Elite Performance Wear | Premium Sportswear</title>
+<meta name="description" content="Verox International LLC — Ultra-premium sportswear for champions. Tracksuits, hoodies, gym wear & more. Wholesale pricing available. Order now.">
+<meta name="keywords" content="premium sportswear, elite gym wear, wholesale tracksuits, performance hoodies, bulk sportswear, Verox International">
+<meta property="og:title" content="VEROX INTERNATIONAL — Elite Performance Wear">
+<meta property="og:description" content="Ultra-premium sportswear engineered for champions. Wholesale & retail available.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #080808;
+  --deep: #0e0e0e;
+  --charcoal: #161616;
+  --slate: #222222;
+  --gold: #C9A84C;
+  --gold-light: #E2C26E;
+  --gold-dim: rgba(201,168,76,0.12);
+  --gold-border: rgba(201,168,76,0.2);
+  --white: #F0EDE8;
+  --white-dim: rgba(240,237,232,0.55);
+  --white-faint: rgba(240,237,232,0.07);
+  --radius: 0px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* CURSOR */
+.cursor {
+  position: fixed; width: 10px; height: 10px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed; width: 36px; height: 36px;
+  border: 1px solid rgba(201,168,76,0.4); border-radius: 50%;
+  pointer-events: none; z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+@media (hover: none) { .cursor, .cursor-ring { display: none; } body { cursor: auto; } }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ============ LOADER ============ */
+#loader {
+  position: fixed; inset: 0; z-index: 9000;
+  background: var(--black);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 40px;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px; letter-spacing: 12px; color: var(--white);
+  animation: logoBreath 1.6s ease infinite alternate;
+}
+.loader-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 8px; text-transform: uppercase;
+  color: var(--gold); font-style: italic; font-weight: 300;
+  margin-top: -30px;
+}
+@keyframes logoBreath {
+  from { opacity: 0.3; letter-spacing: 10px; }
+  to { opacity: 1; letter-spacing: 16px; }
+}
+.loader-bar {
+  width: 180px; height: 1px; background: rgba(201,168,76,0.15);
+  position: relative; overflow: hidden;
+}
+.loader-bar-fill {
+  position: absolute; top: 0; left: 0; height: 100%;
+  background: var(--gold);
+  animation: loadBar 2.2s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes loadBar { 0% { width: 0%; } 100% { width: 100%; } }
+
+/* ============ NAV ============ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 28px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(8,8,8,0.98), transparent);
+  transition: padding 0.4s ease, background 0.4s ease;
+}
+nav.scrolled {
+  padding: 16px 64px;
+  background: rgba(8,8,8,0.98);
+  border-bottom: 1px solid var(--gold-border);
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px; letter-spacing: 5px;
+  color: var(--white); text-decoration: none;
+  display: flex; flex-direction: column; line-height: 1;
+}
+.nav-logo span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8px; letter-spacing: 6px;
+  color: var(--gold); font-weight: 300;
+  text-transform: uppercase; margin-top: 4px;
+}
+.nav-links {
+  display: flex; gap: 44px; list-style: none;
+}
+.nav-links a {
+  font-size: 10px; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--white-dim); text-decoration: none;
+  transition: color 0.3s ease; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px; background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-cta {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--black); background: var(--gold);
+  padding: 11px 26px; text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+/* Mobile Menu */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px; background: none; border: none;
+}
+.hamburger span {
+  display: block; width: 24px; height: 1px;
+  background: var(--white); transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+.mobile-menu {
+  display: none; position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0; z-index: 900;
+  background: rgba(8,8,8,0.98);
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 40px; backdrop-filter: blur(20px);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px; letter-spacing: 6px;
+  color: var(--white); text-decoration: none;
+  transition: color 0.3s ease;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu .mob-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 4px;
+  background: var(--gold); color: var(--black);
+  padding: 16px 48px; margin-top: 20px;
+}
+
+/* ============ HERO ============ */
+#hero {
+  height: 100vh; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(201,168,76,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 85% 15%, rgba(201,168,76,0.04) 0%, transparent 55%),
+    linear-gradient(160deg, #0C0C0C 0%, #080808 50%, #0A0A0A 100%);
+}
+canvas#particles {
+  position: absolute; inset: 0; opacity: 0.35;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  text-align: center; padding: 0 40px;
+  max-width: 1000px;
+}
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px; letter-spacing: 9px; text-transform: uppercase;
+  color: var(--gold); font-weight: 300; font-style: italic;
+  margin-bottom: 28px;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp 1s ease 0.4s forwards;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(68px, 11vw, 148px);
+  line-height: 0.88; letter-spacing: 6px;
+  color: var(--white);
+  opacity: 0; transform: translateY(28px);
+  animation: fadeUp 1s ease 0.6s forwards;
+}
+.hero-title .gold-line {
+  color: var(--gold); display: block;
+  font-style: italic;
+}
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(15px, 1.8vw, 20px);
+  font-weight: 300; letter-spacing: 4px;
+  color: var(--white-dim); margin-top: 28px;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp 1s ease 0.9s forwards;
+}
+.hero-actions {
+  margin-top: 56px; display: flex; gap: 16px;
+  justify-content: center; align-items: center; flex-wrap: wrap;
+  opacity: 0; transform: translateY(16px);
+  animation: fadeUp 1s ease 1.2s forwards;
+}
+.btn-primary {
+  font-size: 10px; letter-spacing: 4.5px; text-transform: uppercase;
+  color: var(--black); background: var(--gold);
+  padding: 17px 50px; text-decoration: none; display: inline-block;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold-light);
+  transform: translateX(-100%); transition: transform 0.35s ease;
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary span { position: relative; z-index: 1; }
+.btn-secondary {
+  font-size: 10px; letter-spacing: 4.5px; text-transform: uppercase;
+  color: var(--white-dim);
+  padding: 17px 50px; text-decoration: none; display: inline-block;
+  border: 1px solid rgba(240,237,232,0.18);
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover { color: var(--white); border-color: var(--gold); }
+
+/* WhatsApp Hero Button */
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #fff; background: #25D366;
+  padding: 17px 32px; text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-whatsapp:hover { background: #1db954; transform: translateY(-2px); }
+.btn-whatsapp svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  opacity: 0; animation: fadeIn 1s ease 2s forwards;
+}
+.hero-scroll span {
+  font-size: 8px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold);
+}
+.scroll-line {
+  width: 1px; height: 50px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2.2s ease infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.15); }
+}
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* ============ MARQUEE ============ */
+.marquee-strip {
+  background: var(--gold); padding: 13px 0;
+  overflow: hidden; display: flex;
+}
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marquee 22s linear infinite;
+  white-space: nowrap;
+}
+.marquee-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px; letter-spacing: 5px;
+  color: var(--black); padding: 0 28px;
+  display: flex; align-items: center; gap: 28px;
+}
+.marquee-dot { width: 3px; height: 3px; background: rgba(8,8,8,0.4); border-radius: 50%; }
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============ SECTION BASE ============ */
+section { padding: 130px 64px; }
+.section-header { text-align: center; margin-bottom: 80px; }
+.section-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 12px; letter-spacing: 8px; text-transform: uppercase;
+  color: var(--gold); font-weight: 300; font-style: italic;
+  margin-bottom: 16px; display: block;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 5.5vw, 76px);
+  letter-spacing: 5px; line-height: 1; color: var(--white);
+}
+.gold-divider {
+  width: 48px; height: 1px; background: var(--gold);
+  margin: 24px auto 0;
+}
+
+/* ============ TRUST STRIP ============ */
+#trust {
+  background: var(--charcoal);
+  padding: 60px 64px;
+  border-top: 1px solid var(--gold-border);
+  border-bottom: 1px solid var(--gold-border);
+}
+.trust-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: var(--gold-border);
+  max-width: 1200px; margin: 0 auto;
+}
+.trust-item {
+  background: var(--charcoal);
+  padding: 40px 36px; text-align: center;
+  transition: background 0.3s ease;
+}
+.trust-item:hover { background: var(--slate); }
+.trust-icon { font-size: 26px; margin-bottom: 16px; display: block; }
+.trust-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px; letter-spacing: 3px; color: var(--white);
+  margin-bottom: 10px;
+}
+.trust-desc {
+  font-size: 11px; letter-spacing: 0.5px; line-height: 1.8;
+  color: var(--white-dim);
+}
+
+/* ============ COLLECTIONS ============ */
+#collections { background: var(--black); padding-top: 110px; }
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 3px; max-width: 1400px; margin: 0 auto;
+}
+.cat-card {
+  position: relative; overflow: hidden;
+  aspect-ratio: 3/4; cursor: pointer;
+  background: var(--charcoal);
+}
+.cat-card:first-child {
+  grid-column: 1 / 2; grid-row: 1 / 3;
+  aspect-ratio: unset;
+}
+.cat-card:nth-child(4), .cat-card:nth-child(5) { aspect-ratio: 16/9; }
+.cat-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+  filter: brightness(0.65);
+}
+.cat-card:hover .cat-bg { transform: scale(1.06); filter: brightness(0.75); }
+.cat-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(8,8,8,0.88) 0%, transparent 55%);
+}
+.cat-label {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 32px;
+}
+.cat-label h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px; letter-spacing: 5px; color: var(--white);
+  margin-bottom: 5px;
+}
+.cat-label p {
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); font-weight: 300;
+}
+.cat-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 14px;
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--white); opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.35s ease;
+}
+.cat-btn::after { content: '→'; color: var(--gold); transition: transform 0.3s ease; }
+.cat-card:hover .cat-btn { opacity: 1; transform: translateY(0); }
+.cat-card:hover .cat-btn::after { transform: translateX(5px); }
+
+/* ============ PRODUCTS ============ */
+#products { background: var(--deep); }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 3px; max-width: 1400px; margin: 0 auto;
+}
+.product-card {
+  position: relative; overflow: hidden;
+  background: var(--charcoal); cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.product-img {
+  aspect-ratio: 3/4; position: relative; overflow: hidden;
+}
+.product-img-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  filter: brightness(0.72);
+}
+.product-card:hover .product-img-bg { transform: scale(1.06); }
+.product-badge {
+  position: absolute; top: 18px; left: 18px;
+  font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--black); background: var(--gold); padding: 5px 11px;
+}
+.product-quick {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(8,8,8,0.92), transparent);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.product-card:hover .product-quick { transform: translateY(0); }
+.product-quick-btn {
+  width: 100%; padding: 13px;
+  background: var(--gold); border: none;
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--black); cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+.product-quick-btn:hover { background: var(--gold-light); }
+.product-info {
+  padding: 22px 26px; background: var(--charcoal);
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.product-card:hover .product-info { border-color: var(--gold); }
+.product-cat {
+  font-size: 8px; letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 7px; font-weight: 500;
+}
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; font-weight: 600;
+  color: var(--white); margin-bottom: 6px; letter-spacing: 1px;
+}
+.product-desc {
+  font-size: 11px; color: var(--white-dim);
+  line-height: 1.75; letter-spacing: 0.4px; margin-bottom: 16px;
+}
+.product-pricing { display: flex; gap: 5px; flex-wrap: wrap; }
+.price-tag {
+  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 9px; border: 1px solid rgba(201,168,76,0.22);
+  color: var(--white-dim); transition: all 0.3s ease;
+}
+.price-tag .amount { color: var(--gold); font-weight: 600; }
+.product-card:hover .price-tag { border-color: rgba(201,168,76,0.45); }
+
+/* ============ PRODUCT DETAIL ============ */
+#product-detail {
+  position: fixed; inset: 0; z-index: 2000;
+  background: var(--black);
+  transform: translateX(100%);
+  transition: transform 0.6s cubic-bezier(0.77,0,0.175,1);
+  overflow-y: auto;
+}
+#product-detail.open { transform: translateX(0); }
+.detail-close {
+  position: fixed; top: 28px; right: 36px; z-index: 2100;
+  width: 48px; height: 48px;
+  border: 1px solid rgba(201,168,76,0.25);
+  background: rgba(8,8,8,0.9);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 18px; color: var(--white);
+  transition: all 0.3s ease;
+}
+.detail-close:hover { border-color: var(--gold); background: var(--gold); color: var(--black); }
+.detail-inner {
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh;
+}
+.detail-visual { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.detail-img-bg {
+  width: 100%; height: 100%;
+  background-size: cover; background-position: center;
+  filter: brightness(0.78);
+  transition: transform 8s ease;
+}
+#product-detail.open .detail-img-bg { transform: scale(1.04); }
+.detail-visual-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 55%, rgba(8,8,8,0.55));
+}
+.detail-visual-badge {
+  position: absolute; top: 36px; left: 36px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 10px; letter-spacing: 5px;
+  color: var(--black); background: var(--gold); padding: 7px 14px;
+}
+.detail-content {
+  padding: 80px 60px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--deep);
+}
+.detail-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px; letter-spacing: 7px; text-transform: uppercase;
+  color: var(--gold); font-style: italic; font-weight: 300;
+  margin-bottom: 14px;
+}
+.detail-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 4.5vw, 68px);
+  letter-spacing: 4px; color: var(--white);
+  line-height: 0.92; margin-bottom: 22px;
+}
+.detail-desc {
+  font-size: 13px; line-height: 1.95;
+  color: var(--white-dim); letter-spacing: 0.4px;
+  margin-bottom: 44px; max-width: 420px;
+}
+.detail-divider { width: 44px; height: 1px; background: var(--gold); margin-bottom: 44px; }
+.pricing-title {
+  font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px;
+}
+.pricing-tiers { display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px; }
+.pricing-tier {
+  position: relative; padding: 24px 28px;
+  border: 1px solid rgba(201,168,76,0.15);
+  background: var(--charcoal);
+  transition: all 0.3s ease; cursor: pointer; overflow: hidden;
+}
+.pricing-tier::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--gold-dim);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.pricing-tier:hover::before, .pricing-tier.active::before { transform: scaleX(1); }
+.pricing-tier.active { border-color: var(--gold); }
+.tier-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 6px; position: relative; z-index: 1;
+}
+.tier-label { font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 4px; color: var(--white); }
+.tier-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-weight: 600; color: var(--gold); letter-spacing: 1px;
+}
+.tier-price span {
+  font-size: 11px; letter-spacing: 2px; color: var(--white-dim);
+  font-family: 'Inter', sans-serif; font-weight: 300;
+}
+.tier-desc { font-size: 11px; letter-spacing: 0.5px; color: var(--white-dim); position: relative; z-index: 1; }
+.tier-badge {
+  position: absolute; top: -1px; right: 18px;
+  font-size: 7px; letter-spacing: 3px; text-transform: uppercase;
+  background: var(--gold); color: var(--black); padding: 4px 10px;
+}
+.detail-cta { display: flex; gap: 10px; flex-wrap: wrap; }
+.cta-main {
+  flex: 1; min-width: 180px; padding: 17px;
+  background: var(--gold); border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px; letter-spacing: 4.5px; text-transform: uppercase;
+  color: var(--black); cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.cta-main:hover { background: var(--gold-light); transform: translateY(-2px); }
+.cta-whatsapp {
+  display: flex; align-items: center; gap: 8px;
+  padding: 17px 22px; background: #25D366; border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: #fff; cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none;
+}
+.cta-whatsapp:hover { background: #1db954; transform: translateY(-2px); }
+.cta-whatsapp svg { width: 15px; height: 15px; fill: #fff; }
+
+/* ============ ABOUT ============ */
+#about {
+  background: var(--black);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; padding: 0; min-height: 80vh;
+}
+.about-visual {
+  position: relative; overflow: hidden;
+  background: var(--charcoal); min-height: 500px;
+}
+.about-visual-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #181818 0%, #0a0a0a 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.about-monogram {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 220px; letter-spacing: -12px;
+  color: rgba(201,168,76,0.05); line-height: 1; user-select: none;
+}
+.about-gold-line { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+.about-content {
+  padding: 100px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--deep);
+}
+.about-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 4.5vw, 68px);
+  letter-spacing: 3px; color: var(--white);
+  line-height: 0.92; margin-bottom: 30px;
+}
+.about-body {
+  font-size: 14px; line-height: 2;
+  color: var(--white-dim); letter-spacing: 0.4px; margin-bottom: 22px;
+}
+.about-stats {
+  display: flex; gap: 44px; margin-top: 48px; flex-wrap: wrap;
+}
+.stat-item { text-align: left; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 46px; letter-spacing: 2px;
+  color: var(--gold); line-height: 1;
+}
+.stat-label {
+  font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--white-dim); margin-top: 6px; display: block;
+}
+
+/* ============ TESTIMONIALS ============ */
+#testimonials {
+  background: var(--charcoal);
+  padding: 110px 64px;
+}
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 3px; max-width: 1200px; margin: 0 auto;
+}
+.testimonial-card {
+  background: var(--slate); padding: 48px 40px;
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.testimonial-card:hover { border-color: var(--gold); background: var(--charcoal); }
+.testimonial-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px; color: var(--gold); line-height: 1;
+  margin-bottom: 20px; opacity: 0.6;
+}
+.testimonial-text {
+  font-size: 13px; line-height: 1.9;
+  color: var(--white-dim); letter-spacing: 0.4px;
+  margin-bottom: 32px; font-style: italic;
+}
+.testimonial-author {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px; letter-spacing: 4px; color: var(--white);
+  margin-bottom: 4px;
+}
+.testimonial-role {
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold);
+}
+.testimonial-stars {
+  display: flex; gap: 4px; margin-bottom: 20px;
+}
+.testimonial-stars span {
+  color: var(--gold); font-size: 13px;
+}
+
+/* ============ CONTACT ============ */
+#contact { background: var(--deep); text-align: center; }
+.contact-wrap { max-width: 720px; margin: 0 auto; }
+.contact-intro {
+  font-size: 14px; line-height: 1.95;
+  color: var(--white-dim); letter-spacing: 0.4px;
+  margin: 24px 0 48px;
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 10px;
+}
+.contact-input {
+  padding: 17px 22px; background: var(--charcoal);
+  border: 1px solid rgba(201,168,76,0.15);
+  color: var(--white); font-family: 'Inter', sans-serif;
+  font-size: 12px; letter-spacing: 1px;
+  outline: none; transition: border-color 0.3s ease;
+  appearance: none;
+}
+.contact-input:focus { border-color: var(--gold); }
+.contact-input::placeholder { color: rgba(240,237,232,0.22); letter-spacing: 2px; }
+.contact-input.full { grid-column: 1 / -1; }
+textarea.contact-input { resize: vertical; min-height: 110px; }
+select.contact-input option { background: var(--charcoal); color: var(--white); }
+.contact-actions {
+  display: flex; gap: 10px; margin-top: 0;
+}
+.contact-submit {
+  flex: 1; padding: 19px; background: var(--gold); border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--black); cursor: pointer; transition: all 0.3s ease;
+}
+.contact-submit:hover { background: var(--gold-light); }
+.contact-whatsapp {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 19px 28px; background: #25D366; border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #fff; cursor: pointer; transition: all 0.3s ease;
+  text-decoration: none; white-space: nowrap;
+}
+.contact-whatsapp:hover { background: #1db954; }
+.contact-whatsapp svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--gold-border);
+  padding: 80px 64px 40px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px; margin-bottom: 60px;
+}
+.footer-brand .nav-logo { font-size: 28px; margin-bottom: 20px; }
+.footer-brand p {
+  font-size: 12px; line-height: 1.95;
+  color: var(--white-dim); max-width: 280px; margin-top: 16px;
+}
+.footer-col h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 13px; letter-spacing: 4px; color: var(--gold);
+  margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col ul li a {
+  font-size: 11px; letter-spacing: 1px;
+  color: var(--white-dim); text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-col ul li a:hover { color: var(--gold); }
+.footer-social {
+  display: flex; gap: 12px; margin-top: 24px;
+}
+.social-btn {
+  width: 36px; height: 36px;
+  border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white-dim); text-decoration: none; font-size: 13px;
+  transition: all 0.3s ease;
+}
+.social-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 28px; border-top: 1px solid var(--white-faint); flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p {
+  font-size: 9px; letter-spacing: 2px; color: rgba(240,237,232,0.2);
+  text-transform: uppercase;
+}
+.footer-gold { font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+
+/* ============ FLOATING WHATSAPP ============ */
+.float-whatsapp {
+  position: fixed; bottom: 32px; right: 32px; z-index: 800;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.35);
+  text-decoration: none; transition: all 0.3s ease;
+  animation: floatPulse 3s ease infinite;
+}
+.float-whatsapp:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.5); }
+.float-whatsapp svg { width: 28px; height: 28px; fill: #fff; }
+@keyframes floatPulse {
+  0%,100% { box-shadow: 0 4px 24px rgba(37,211,102,0.35); }
+  50% { box-shadow: 0 4px 36px rgba(37,211,102,0.55); }
+}
+.float-tooltip {
+  position: absolute; right: 68px;
+  background: rgba(8,8,8,0.95);
+  border: 1px solid var(--gold-border);
+  color: var(--white); font-size: 10px; letter-spacing: 2px;
+  padding: 8px 14px; white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.float-whatsapp:hover .float-tooltip { opacity: 1; }
+
+/* ============ TOAST ============ */
+.toast {
+  position: fixed; bottom: 36px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--gold); color: var(--black);
+  padding: 14px 28px;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  z-index: 5000; opacity: 0;
+  transition: all 0.4s ease; pointer-events: none;
+  white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ============ SCROLL REVEAL ============ */
+.reveal {
+  opacity: 0; transform: translateY(36px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+.reveal-delay-3 { transition-delay: 0.45s; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  nav { padding: 22px 28px; }
+  nav.scrolled { padding: 14px 28px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  section { padding: 90px 28px; }
+  #trust, #features { padding: 60px 28px; }
+  .cat-grid { grid-template-columns: 1fr 1fr; }
+  .cat-card:first-child { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 16/7; }
+  .detail-inner { grid-template-columns: 1fr; }
+  .detail-visual { position: relative; height: 60vw; }
+  #about { grid-template-columns: 1fr; }
+  .about-content { padding: 60px 40px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .trust-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; gap: 3px; }
+}
+@media (max-width: 640px) {
+  nav { padding: 18px 20px; }
+  .hero-title { font-size: 58px; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-secondary, .btn-whatsapp { width: 100%; text-align: center; justify-content: center; }
+  .cat-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-actions { flex-direction: column; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .detail-content { padding: 40px 24px; }
+  .detail-cta { flex-direction: column; }
+  .about-stats { gap: 28px; }
+  section { padding: 72px 20px; }
+  footer { padding: 60px 20px 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">VEROX</div>
+  <div class="loader-sub">International LLC</div>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- FLOATING WHATSAPP -->
+<a class="float-whatsapp" href="https://wa.me/923000000000?text=Hi%20Verox%20International%2C%20I%27m%20interested%20in%20your%20products!" target="_blank" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="float-tooltip">Order on WhatsApp</span>
+</a>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    VEROX INTERNATIONAL
+    <span>LLC — Elite Performance Wear</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#contact" class="nav-cta">Wholesale Inquiry</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#collections" onclick="closeMobileMenu()">Collections</a>
+  <a href="#products" onclick="closeMobileMenu()">Products</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="#contact" class="mob-cta" onclick="closeMobileMenu()">Wholesale Inquiry</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="particles"></canvas>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Verox International LLC — Crafted for Excellence</p>
+    <h1 class="hero-title">
+      WEAR THE
+      <span class="gold-line">ELITE</span>
+    </h1>
+    <p class="hero-subtitle">Ultra Premium Sportswear — Engineered for Champions</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary"><span>Explore Collection</span></a>
+      <a href="https://wa.me/923000000000?text=Hi%20Verox%20International%2C%20I%27m%20interested%20in%20ordering!" target="_blank" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Order on WhatsApp
+      </a>
+      <a href="#contact" class="btn-secondary">Wholesale Pricing</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marquee-track"></div>
+</div>
+
+<!-- TRUST STRIP -->
+<section id="trust">
+  <div class="trust-grid">
+    <div class="trust-item reveal">
+      <span class="trust-icon">⚡</span>
+      <div class="trust-name">PERFORMANCE FABRIC</div>
+      <p class="trust-desc">Moisture-wicking 4-way stretch technology built for peak athletic performance.</p>
+    </div>
+    <div class="trust-item reveal reveal-delay-1">
+      <span class="trust-icon">👑</span>
+      <div class="trust-name">LUXURY FINISH</div>
+      <p class="trust-desc">Precision stitching, reinforced seams, and refined gold-detail finishing on every piece.</p>
+    </div>
+    <div class="trust-item reveal reveal-delay-2">
+      <span class="trust-icon">🌍</span>
+      <div class="trust-name">GLOBAL STANDARD</div>
+      <p class="trust-desc">Manufactured to international quality standards. Independently verified QC on every batch.</p>
+    </div>
+    <div class="trust-item reveal reveal-delay-3">
+      <span class="trust-icon">📦</span>
+      <div class="trust-name">WHOLESALE READY</div>
+      <p class="trust-desc">Single units to 10,000+ pieces. Dedicated B2B support and bulk discount tiers available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section id="collections">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Curated for Champions</span>
+    <h2 class="section-title">OUR COLLECTIONS</h2>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card reveal" onclick="scrollToProduct('tracksuit')">
+      <div class="cat-bg" style="background-image: url('https://images.unsplash.com/photo-1556906781-9a414e2a7735?w=900&q=85');"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>TRACKSUITS</h3><p>Premium Collection</p>
+        <div class="cat-btn">Explore Now</div>
+      </div>
+    </div>
+    <div class="cat-card reveal reveal-delay-1" onclick="scrollToProduct('hoodie')">
+      <div class="cat-bg" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=85');"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>HOODIES</h3><p>Luxury Streetwear</p>
+        <div class="cat-btn">Explore Now</div>
+      </div>
+    </div>
+    <div class="cat-card reveal reveal-delay-2" onclick="scrollToProduct('gymwear')">
+      <div class="cat-bg" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=85');"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>GYM WEAR</h3><p>Performance Series</p>
+        <div class="cat-btn">Explore Now</div>
+      </div>
+    </div>
+    <div class="cat-card reveal reveal-delay-1" onclick="scrollToProduct('shorts')">
+      <div class="cat-bg" style="background-image: url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=700&q=85');"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>SHORTS</h3><p>Active Essentials</p>
+        <div class="cat-btn">Explore Now</div>
+      </div>
+    </div>
+    <div class="cat-card reveal reveal-delay-2" onclick="scrollToProduct('tshirt')">
+      <div class="cat-bg" style="background-image: url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700&q=85');"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-label">
+        <h3>T-SHIRTS</h3><p>Premium Basics</p>
+        <div class="cat-btn">Explore Now</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">The Full Range</span>
+    <h2 class="section-title">SHOP ALL PRODUCTS</h2>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="padding:0;">
+  <div class="about-visual">
+    <div class="about-visual-bg">
+      <div class="about-monogram">VX</div>
+    </div>
+    <div class="about-gold-line"></div>
+  </div>
+  <div class="about-content">
+    <span class="section-eyebrow">Our Story</span>
+    <h2 class="about-title">BORN FROM AMBITION.<br>BUILT FOR CHAMPIONS.</h2>
+    <p class="about-body">Verox International LLC is a premium sportswear brand built for those who demand excellence — on the track, in the gym, on the street. We design and manufacture ultra-quality athletic apparel crafted from performance-grade materials.</p>
+    <p class="about-body">From elite individual athletes to large-scale wholesale buyers, our tiered pricing model ensures every customer receives uncompromising quality at the right value. Every stitch reflects our obsession with perfection.</p>
+    <div class="about-stats">
+      <div class="stat-item">
+        <span class="stat-num">50+</span>
+        <span class="stat-label">Products</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Premium Quality</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">24h</span>
+        <span class="stat-label">Response Time</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Happy Clients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Client Voices</span>
+    <h2 class="section-title">WHAT THEY SAY</h2>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">We ordered 200 tracksuits for our academy and the quality absolutely exceeded our expectations. The stitching, fabric, and finish are all premium-grade. Will definitely reorder.</p>
+      <div class="testimonial-author">AHMED AL-RASHID</div>
+      <div class="testimonial-role">Sports Academy Director, Dubai</div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">As a gym owner I've tried many suppliers. Verox is on another level — the gym wear sets are durable, they hold shape after washing, and the gold details give it a luxury edge clients love.</p>
+      <div class="testimonial-author">SARAH MEHMOOD</div>
+      <div class="testimonial-role">Gym Owner, Lahore</div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Bulk order of 500 hoodies delivered on time, perfectly packed. The wholesale pricing is the best I've found. Our customers are genuinely impressed by the premium quality.</p>
+      <div class="testimonial-author">JAMES THORNTON</div>
+      <div class="testimonial-role">Retail Distributor, UK</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Get In Touch</span>
+      <h2 class="section-title">ORDER INQUIRY</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <p class="contact-intro">Place your order, request a wholesale quote, or reach out for a custom bulk order. Our team responds within 24 hours. For instant response, reach us on WhatsApp.</p>
+    <div class="contact-grid reveal">
+      <input type="text" class="contact-input" placeholder="Full Name">
+      <input type="email" class="contact-input" placeholder="Email Address">
+      <input type="tel" class="contact-input" placeholder="Phone / WhatsApp Number">
+      <input type="text" class="contact-input" placeholder="Company Name (optional)">
+      <select class="contact-input">
+        <option value="" disabled selected>Select Product</option>
+        <option>Tracksuit</option>
+        <option>Hoodie</option>
+        <option>T-Shirt</option>
+        <option>Shorts</option>
+        <option>Trouser</option>
+        <option>Gym Wear Set</option>
+        <option>Custom Order</option>
+      </select>
+      <select class="contact-input">
+        <option value="" disabled selected>Order Type</option>
+        <option>Single Unit (1 pc)</option>
+        <option>Small Batch (10+ pcs)</option>
+        <option>Bulk Order (100+ pcs)</option>
+      </select>
+      <textarea class="contact-input full" placeholder="Message / Order Details — include size, color, quantity..."></textarea>
+    </div>
+    <div class="contact-actions reveal">
+      <button class="contact-submit" onclick="showToast('Inquiry sent! We\'ll contact you within 24 hours.')">Send Inquiry</button>
+      <a class="contact-whatsapp" href="https://wa.me/923000000000?text=Hi%20Verox%20International%2C%20I%27d%20like%20to%20place%20an%20order!" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Order
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        VEROX INTERNATIONAL
+        <span>LLC — Elite Performance Wear</span>
+      </a>
+      <p>Premium sportswear engineered for champions. Tracksuits, hoodies, gym wear, and more — crafted to the highest standard.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+        <a href="#" class="social-btn" aria-label="WhatsApp">WA</a>
+        <a href="#" class="social-btn" aria-label="Facebook">FB</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#products">Tracksuits</a></li>
+        <li><a href="#products">Hoodies</a></li>
+        <li><a href="#products">T-Shirts</a></li>
+        <li><a href="#products">Shorts</a></li>
+        <li><a href="#products">Gym Wear</a></li>
+        <li><a href="#products">Trousers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Wholesale</a></li>
+        <li><a href="#contact">Bulk Orders</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Partnerships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:info@veroxinternational.com">info@veroxinternational.com</a></li>
+        <li><a href="https://wa.me/923000000000" target="_blank">WhatsApp: +92 300 0000000</a></li>
+        <li><a href="#">Instagram: @veroxintl</a></li>
+        <li><a href="#">Mon–Sat: 9AM – 8PM PKT</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Verox International LLC. All Rights Reserved.</p>
+    <span class="footer-gold">Elite Performance Wear</span>
+  </div>
+</footer>
+
+<!-- PRODUCT DETAIL OVERLAY -->
+<div id="product-detail">
+  <button class="detail-close" onclick="closeDetail()" aria-label="Close">✕</button>
+  <div class="detail-inner">
+    <div class="detail-visual">
+      <div class="detail-img-bg" id="detail-img"></div>
+      <div class="detail-visual-overlay"></div>
+      <div class="detail-visual-badge" id="detail-badge">NEW ARRIVAL</div>
+    </div>
+    <div class="detail-content">
+      <p class="detail-eyebrow" id="detail-cat">Category</p>
+      <h1 class="detail-name" id="detail-name">Product Name</h1>
+      <p class="detail-desc" id="detail-desc">Description</p>
+      <div class="detail-divider"></div>
+      <p class="pricing-title">Select Your Pricing Tier</p>
+      <div class="pricing-tiers" id="pricing-tiers"></div>
+      <div class="detail-cta">
+        <button class="cta-main" onclick="showToast('Inquiry received! We\'ll contact you shortly.')">Place Order</button>
+        <a class="cta-whatsapp" id="detail-whatsapp" href="https://wa.me/923000000000" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== LOADER ======
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('loader').classList.add('hidden'), 2400);
+});
+
+// ====== CURSOR ======
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
+});
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.11; ringY += (mouseY - ringY) * 0.11;
+  ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a, button, .product-card, .cat-card, .pricing-tier').forEach(el => {
+  el.addEventListener('mouseenter', () => { cursor.style.width = '18px'; cursor.style.height = '18px'; ring.style.width = '56px'; ring.style.height = '56px'; });
+  el.addEventListener('mouseleave', () => { cursor.style.width = '10px'; cursor.style.height = '10px'; ring.style.width = '36px'; ring.style.height = '36px'; });
+});
+
+// ====== NAV ======
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ====== MOBILE MENU ======
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobileMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ====== PARTICLES ======
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 1.4 + 0.2;
+    this.speedX = (Math.random() - 0.5) * 0.28;
+    this.speedY = -Math.random() * 0.45 - 0.08;
+    this.opacity = Math.random() * 0.55 + 0.1;
+    this.gold = Math.random() > 0.65;
+  }
+  update() {
+    this.x += this.speedX; this.y += this.speedY; this.opacity -= 0.001;
+    if (this.y < -10 || this.opacity <= 0) this.reset();
+  }
+  draw() {
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.gold ? `rgba(201,168,76,${this.opacity})` : `rgba(240,237,232,${this.opacity * 0.35})`;
+    ctx.fill();
+  }
+}
+for (let i = 0; i < 130; i++) particles.push(new Particle());
+function animParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+
+// ====== MARQUEE ======
+const marqueeItems = ['TRACKSUITS','HOODIES','SHORTS','GYM WEAR','T-SHIRTS','TROUSERS','PREMIUM QUALITY','BULK ORDERS','FAST SHIPPING','VEROX INTERNATIONAL','WHOLESALE PRICING'];
+const track = document.getElementById('marquee-track');
+[...marqueeItems, ...marqueeItems].forEach(item => {
+  const el = document.createElement('div');
+  el.className = 'marquee-item';
+  el.innerHTML = `${item}<div class="marquee-dot"></div>`;
+  track.appendChild(el);
+});
+
+// ====== PRODUCTS DATA ======
+const products = [
+  {
+    id: 'tracksuit', name: 'APEX TRACKSUIT', category: 'Tracksuits', badge: 'BESTSELLER',
+    desc: 'Our flagship tracksuit crafted from premium moisture-wicking fabric with contrast gold piping. Built for champions who demand both performance and style.',
+    img: 'https://images.unsplash.com/photo-1556906781-9a414e2a7735?w=700&q=85',
+    prices: [
+      { label: 'Single Unit', qty: '1 Piece', price: '$89', desc: 'Perfect for individual athletes & personal use' },
+      { label: 'Small Batch', qty: '10+ Pieces', price: '$72', desc: 'Great for teams, gyms & small retailers', best: true },
+      { label: 'Bulk Order', qty: '100+ Pieces', price: '$55', desc: 'Wholesale pricing for large-scale retailers & distributors' }
+    ]
+  },
+  {
+    id: 'hoodie', name: 'ELITE HOODIE', category: 'Hoodies', badge: 'NEW ARRIVAL',
+    desc: 'Heavyweight French terry construction with precision embroidery. The ultimate luxury streetwear hoodie for discerning athletes and street style icons.',
+    img: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=85',
+    prices: [
+      { label: 'Single Unit', qty: '1 Piece', price: '$65', desc: 'Perfect for individual purchase' },
+      { label: 'Small Batch', qty: '10+ Pieces', price: '$52', desc: 'Ideal for teams and boutiques', best: true },
+      { label: 'Bulk Order', qty: '100+ Pieces', price: '$38', desc: 'Maximum savings for wholesale buyers' }
+    ]
+  },
+  {
+    id: 'gymwear', name: 'PERFORMANCE GYM SET', category: 'Gym Wear', badge: 'TOP RATED',
+    desc: 'Pro-grade compression top and shorts set. 4-way stretch fabric with anti-odor technology. Engineered for elite performance in every training session.',
+    img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=85',
+    prices: [
+      { label: 'Single Unit', qty: '1 Set', price: '$78', desc: 'Individual performance set' },
+      { label: 'Small Batch', qty: '10+ Sets', price: '$62', desc: 'Gym & fitness center packages', best: true },
+      { label: 'Bulk Order', qty: '100+ Sets', price: '$46', desc: 'Large-scale distributor pricing' }
+    ]
+  },
+  {
+    id: 'shorts', name: 'VEROX PRO SHORTS', category: 'Shorts', badge: 'POPULAR',
+    desc: 'Lightweight, breathable performance shorts with integrated brief liner and deep pockets. Designed for maximum range of motion in any sport.',
+    img: 'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=700&q=85',
+    prices: [
+      { label: 'Single Unit', qty: '1 Piece', price: '$38', desc: 'Single pair purchase' },
+      { label: 'Small Batch', qty: '10+ Pieces', price: '$29', desc: 'Perfect for team orders', best: true },
+      { label: 'Bulk Order', qty: '100+ Pieces', price: '$19', desc: 'Wholesale bulk pricing' }
+    ]
+  },
+  {
+    id: 'tshirt', name: 'SIGNATURE T-SHIRT', category: 'T-Shirts', badge: 'CORE',
+    desc: 'Premium supima cotton blend with subtle Verox embossed branding. The foundation of every athlete\'s wardrobe. Available in 12 refined colorways.',
+    img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700&q=85',
+    prices: [
+      { label: 'Single Unit', qty: '1 Piece', price: '$32', desc: 'Individual purchase' },
+      { label: 'Small Batch', qty: '10+ Pieces', price: '$24', desc: 'Team & retail packages', best: true },
+      { label: 'Bulk Order', qty: '100+ Pieces', price: '$15', desc: 'Maximum wholesale discount' }
+    ]
+  },
+  {
+    id: 'trouser', name: 'ELITE JOGGER', category: 'Trousers', badge: 'NEW',
+    desc: 'Tapered slim-fit jogger trouser in brushed fleece with gold-tipped drawstring. The perfect balance of luxury comfort and athletic functionality.',
+    img: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=700&q=85',
+    prices: [
+      { label: 'Single Unit', qty: '1 Piece', price: '$55', desc: 'Single trouser purchase' },
+      { label: 'Small Batch', qty: '10+ Pieces', price: '$44', desc: 'Small retail & team orders', best: true },
+      { label: 'Bulk Order', qty: '100+ Pieces', price: '$32', desc: 'Bulk wholesale rate' }
+    ]
+  }
+];
+
+// ====== RENDER PRODUCTS ======
+const grid = document.getElementById('products-grid');
+products.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'product-card reveal';
+  card.id = 'card-' + p.id;
+  card.innerHTML = `
+    <div class="product-img">
+      <div class="product-img-bg" style="background-image:url('${p.img}')"></div>
+      <div class="product-badge">${p.badge}</div>
+      <div class="product-quick">
+        <button class="product-quick-btn" onclick="event.stopPropagation(); openDetail('${p.id}')">VIEW PRICING & ORDER</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <div class="product-cat">${p.category}</div>
+      <h3 class="product-name">${p.name}</h3>
+      <p class="product-desc">${p.desc.substring(0,90)}...</p>
+      <div class="product-pricing">
+        <div class="price-tag">1pc: <span class="amount">${p.prices[0].price}</span></div>
+        <div class="price-tag">10+: <span class="amount">${p.prices[1].price}</span></div>
+        <div class="price-tag">100+: <span class="amount">${p.prices[2].price}</span></div>
+      </div>
+    </div>`;
+  card.addEventListener('click', () => openDetail(p.id));
+  grid.appendChild(card);
+});
+
+// ====== PRODUCT DETAIL ======
+function openDetail(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('detail-img').style.backgroundImage = `url('${p.img}')`;
+  document.getElementById('detail-badge').textContent = p.badge;
+  document.getElementById('detail-cat').textContent = p.category;
+  document.getElementById('detail-name').textContent = p.name;
+  document.getElementById('detail-desc').textContent = p.desc;
+  const wa = document.getElementById('detail-whatsapp');
+  wa.href = `https://wa.me/923000000000?text=Hi%20Verox%20International%2C%20I%27m%20interested%20in%20the%20${encodeURIComponent(p.name)}!`;
+  const tiersEl = document.getElementById('pricing-tiers');
+  tiersEl.innerHTML = '';
+  p.prices.forEach((tier, i) => {
+    const t = document.createElement('div');
+    t.className = 'pricing-tier' + (i === 1 ? ' active' : '');
+    t.innerHTML = `
+      ${tier.best ? '<div class="tier-badge">BEST VALUE</div>' : ''}
+      <div class="tier-header">
+        <span class="tier-label">${tier.label}</span>
+        <div class="tier-price">${tier.price} <span>/ ${tier.qty}</span></div>
+      </div>
+      <p class="tier-desc">${tier.desc}</p>`;
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.pricing-tier').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    });
+    tiersEl.appendChild(t);
+  });
+  document.getElementById('product-detail').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDetail() {
+  document.getElementById('product-detail').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+
+// ====== SCROLL TO PRODUCT ======
+function scrollToProduct(id) {
+  const card = document.getElementById('card-' + id);
+  if (card) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => openDetail(id), 600);
+  }
+}
+
+// ====== TOAST ======
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ====== SCROLL REVEAL ======
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
